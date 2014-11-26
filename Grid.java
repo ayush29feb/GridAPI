@@ -7,8 +7,7 @@ import javax.swing.*;
 public class Grid extends JPanel implements ActionListener{
 
 	// Private Fields
-	private int width, height;
-	
+	private int width, height;	
 	private Timer t = new Timer(50, this);
 	private double curX = 0, curY = 0;
 
@@ -57,9 +56,10 @@ public class Grid extends JPanel implements ActionListener{
         if (showGrid) {
         	drawGrids(g);
         }
-     
+
         t.start(); // Updates The Graph
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {

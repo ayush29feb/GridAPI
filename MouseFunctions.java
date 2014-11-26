@@ -3,7 +3,7 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import javax.swing.event.MouseInputListener;
 
-public class MouseFunctions implements MouseWheelListener,MouseInputListener{
+public class MouseFunctions implements MouseWheelListener, MouseInputListener{
 
     Space space;
     int MouseTemp[] = {0,0};

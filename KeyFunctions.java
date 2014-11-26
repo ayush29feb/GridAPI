@@ -2,26 +2,30 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyFunctions implements KeyListener{
-    Space space;
+    Grid grid;
 
-    public KeyFunctions(Space space) {
-        this.space = space;
+    public KeyFunctions(Grid grid) {
+        this.grid = grid;
     }
     
     @Override
     public void keyTyped(KeyEvent e) {
         char KeyChar = e.getKeyChar();        
         if(KeyChar == ']'){
-            this.space.Grid[2]++;            
+            grid.boxUnit++;            
         }
-        if(KeyChar == '[' && this.space.Grid[2]>1){
-            this.space.Grid[2]--;
+        if(KeyChar == '[' && grid.boxUnit>1){
+            grid.boxUnit--;
         }
         if(KeyChar == 'g'){
-            if(this.space.grid){this.space.grid = false;}else{this.space.grid = true;}
+            if(grid.showGrid) {
+                grid.showGrid = false;
+            } else { 
+                grid.showGrid = true;
+            }
         }if(KeyChar == '0'){
-            this.space.Grid[0] = this.space.getWidth()/2;
-            this.space.Grid[1] = this.space.getHeight()/2;
+            grid.originX = grid.getWidth()/2;
+            grid.originY = grid.getHeight()/2;
         }
         
     }
@@ -30,22 +34,22 @@ public class KeyFunctions implements KeyListener{
     public void keyPressed(KeyEvent e) {
         int c = e.getKeyCode();
         if(c == 38){
-            this.space.Grid[1] += 10;
+            grid.originY += 10;
         }
         if(c == 37){
-            this.space.Grid[0] += 10;
+            grid.originX += 10;
         }
         if(c == 40){
-            this.space.Grid[1] -= 10;
+            grid.originY -= 10;
         }
         if(c == 39){
-            this.space.Grid[0] -= 10;
+            grid.originX -= 10;
         }//zoom in
         if(c == 107){
-            this.space.Grid[3] += 10;
+            grid.boxSize += 10;
         }//Zoom out
         if(c == 109){
-            this.space.Grid[3] -=10;
+            grid.boxSize -=10;
         }
         
         

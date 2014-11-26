@@ -5,21 +5,21 @@ import javax.swing.event.MouseInputListener;
 
 public class MouseFunctions implements MouseWheelListener, MouseInputListener{
 
-    Space space;
-    int MouseTemp[] = {0,0};
+    Grid grid;
+    int MouseTemp[] = {0, 0};
     
-    public MouseFunctions(Space space) {
-        this.space = space;
+    public MouseFunctions(Grid grid) {
+        this.grid = grid;
     }
     
     
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
-        if(e.getUnitsToScroll() > 0 && this.space.Grid[3] > 20){
-            this.space.Grid[3]-=10;            
+        if(e.getUnitsToScroll() > 0 && grid.boxSize > 20){
+            grid.boxSize -= 10;            
         }
-        if(e.getUnitsToScroll() < 0 && this.space.Grid[3] < this.space.getWidth()/3){
-            this.space.Grid[3]+=10;
+        if(e.getUnitsToScroll() < 0 && grid.boxSize < grid.getWidth()/3){
+            grid.boxSize += 10;
         }        
 
     }
@@ -39,9 +39,9 @@ public class MouseFunctions implements MouseWheelListener, MouseInputListener{
     @Override
     public void mouseReleased(MouseEvent e) {
         int diffx = e.getX() - this.MouseTemp[0];
-        this.space.Grid[0] += diffx;
+        grid.originX += diffx;
         int diffy = e.getY() - this.MouseTemp[1];
-        this.space.Grid[1] += diffy;
+        grid.originY += diffy;
 
     }
 
@@ -62,8 +62,8 @@ public class MouseFunctions implements MouseWheelListener, MouseInputListener{
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        this.space.curX = ((double)Math.round(space.getRealX(e.getX())*100))/100;
-        this.space.curY = ((double)Math.round(space.getRealY(e.getY())*100))/100;;
+        grid.setCurX(((double)Math.round(grid.getRealX(e.getX()) * 100)) / 100);
+        grid.setCurY(((double)Math.round(grid.getRealY(e.getY()) * 100)) / 100);
     }
     
 }
